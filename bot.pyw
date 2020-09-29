@@ -35,7 +35,7 @@ async def on_ready():
 		if guild.name == GUILD_NAME:
 			glob_guild = guild
 			print(f'{client.user} is thinking about guild {guild.name}')
-			break
+			break 
 	for channel in glob_guild.channels:
 		if channel.name == THOUGHTS_CHANNEL_NAME:
 			glob_thoughts_channel = channel
@@ -47,13 +47,17 @@ async def on_ready():
 async def on_message(message):
 	if "all_messages" in VERBOSE:
 		print(message.content)
+
+	#reasons to not delete message
 	if message.channel.name != THOUGHTS_CHANNEL_NAME:
 		return
 	if message.author == client.user:
 		return
+	if message.is_system():
+		return
 
 	if not (message.content.startswith("\U0001f914 thinking about") or message.content.startswith("\U0001f914thinking about")):
-		print(f"Thinking about deleting {message.author.name}'s message \"{message.content}\"")
+		print(f"Thinking about deleting @{message.author.name}'s message \"{message.content}\"")
 		await message.delete()
 	return
 
