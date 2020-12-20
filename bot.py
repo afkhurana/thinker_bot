@@ -74,7 +74,11 @@ async def on_message(message):
 				or message.content.startswith("<:thonk:" + str(glob_thonk_emoji.id)
 					+ "> thinking about")
 				or message.content.startswith("<:thonk:" + str(glob_thonk_emoji.id)
-					+ ">thinking about") )
+					+ ">thinking about")
+				or message.content.startswith("<:thonk:" + str(glob_thonk_emoji.id)
+					+ "> thonking about")
+				or message.content.startswith("<:thonk:" + str(glob_thonk_emoji.id)
+					+ ">thonking about")  )
 	else:
 		acceptable_message = (message.content.startswith("\U0001f914 "
 													"thinking about")
